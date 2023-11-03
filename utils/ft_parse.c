@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:03:54 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 18:30:43 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/02 23:31:50 by luzog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	ft_init_flags(t_arg *arg)
 	arg->flag_hash = 0;
 	arg->width = -1;
 	arg->precision = -1;
-	arg->length = 0;
+	arg->size = 0;
 	arg->type = '\0';
+	arg->length = 0;
 }
 
 int	ft_str_contains(const char *str, char c)
@@ -36,7 +37,7 @@ int	ft_str_contains(const char *str, char c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_uatoi(const char *str)
 {
 	int	i;
 	int	nbr;
@@ -92,9 +93,14 @@ int	ft_parse_width(t_arg *arg, const char *str)
 	}
 	else if (str[i] >= '0' && str[i] <= '9')
 	{
-		arg->width = ft_atoi(str);
+		arg->width = ft_uatoi(str);
 		while (str[i] >= '0' && str[i] <= '9')
 			i++;
+		if (arg->flag_minus == 2)
+		{
+			arg->width *= -1;
+			arg->flag_minus = 1;
+		}
 	}
 	return (i);
 }
@@ -114,7 +120,7 @@ int	ft_parse_precision(t_arg *arg, const char *str)
 		}
 		else
 		{
-			arg->precision = ft_atoi(str);
+			arg->precision = ft_uatoi(str);
 			while (str[i] >= '0' && str[i] <= '9')
 				i++;
 		}
@@ -130,17 +136,17 @@ int	ft_parse_lenght(t_arg *arg, const char *str)
 	if (ft_str_contains("hl", str[i]))
 	{
 		if (str[i] == 'h')
-			arg->length = 2;
+			arg->size = 2;
 		else if (str[i] == 'l')
-			arg->length = 3;
+			arg->size = 3;
 		i++;
 	}
 	if (ft_str_contains("hl", str[i]))
 	{
 		if (str[i] == 'h')
-			arg->length = 1;
+			arg->size = 1;
 		else if (str[i] == 'l')
-			arg->length = 4;
+			arg->size = 4;
 		i++;
 	}
 	return (i);
@@ -148,27 +154,28 @@ int	ft_parse_lenght(t_arg *arg, const char *str)
 
 t_arg	*ft_parse(const char *str)
 {
-	t_arg	*flags;
+	t_arg	*arg;
 	size_t	i;
 
 	i = 0;
-	flags = malloc(sizeof(t_arg));
-	if (!flags)
+	arg = malloc(sizeof(t_arg));
+	if (!arg)
 		return (NULL);
-	ft_init_flags(flags);
+	ft_init_flags(arg);
 	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
-		i += ft_parse_flags(flags, str);
+		i += ft_parse_flags(arg, str);
 	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
-		i += ft_parse_width(flags, str + i);
+		i += ft_parse_width(arg, str + i);
 	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
-		i += ft_parse_precision(flags, str + i);
+		i += ft_parse_precision(arg, str + i);
 	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
-		i += ft_parse_lenght(flags, str + i);
+		i += ft_parse_lenght(arg, str + i);
 	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
 	{
-		free(flags);
+		free(arg);
 		return (NULL);
 	}
-	flags->type = str[i];
-	return (flags);
+	arg->type = str[i];
+	arg->length = i + 1;
+	return (arg);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.normless.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:39:00 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 15:30:14 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/02 23:48:15 by luzog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 int main(void)
 {
 	char *str = "Hello, world!";
-	int num = 42;
+	/*int num = 42;
 	int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0;
 	int b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
 
 	// Testing ft_printf
 	a1 = ft_printf("Testing ft_printf:\n");
-	a2 = ft_printf("Character: %c\n", *str);
+	a2 = ft_printf("Character: |%c|\n", *str);
+	a2 = ft_printf("Character: |%10c|\n", *str);
+	a2 = ft_printf("Character: |%-10c|\n", *str);
+	a2 = ft_printf("Character: |%-010c|\n", *str);
 	a3 = ft_printf("String: %s\n", str);
 	a4 = ft_printf("Integer: %d\n", num);
 	a5 = ft_printf("Hexadecimal: %x\n", -15);
@@ -66,7 +69,9 @@ int main(void)
 	printf("|%#020x|\n", 123456);
 	printf("|%20s|\n", str);
 	printf("|%-20.5s|\n", str);
-	printf("|%-.*s|\n", 40, str);
+	printf("|%-.*s|\n", 40, str);*/
+
+	ft_printf("Character: |%*c|\n", 40, *str);
 
 	return 0;
 }

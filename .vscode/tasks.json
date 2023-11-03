@@ -16,9 +16,9 @@
                 "bonus/misc/*.c",
                 "utils/*.c",
                 "-I.",
-                "-Wall",
-                "-Wextra",
-                "-Werror",
+                //"-Wall",
+                //"-Wextra",
+                //"-Werror",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

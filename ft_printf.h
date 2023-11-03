@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 15:34:37 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/02 23:45:17 by luzog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 /**
  * @brief	Store a printf argument
@@ -43,10 +44,13 @@
  * 
  * @param	precision	Integer, default -1, -2 if '*'
  * 
- * @param	length		Integer, default 0,
+ * @param	size		Integer, default 0,
  * 						[  1: hh  |  2: h  |  3: l  |  4: ll  ]
  * 
  * @param	type		Character [cspdiuxX%]
+ * 
+ * @param	length		Integer, Length of the NON-FOMATTED argument
+ * 						WITHOUT the starting '%' character
 */
 typedef struct s_arg
 {
@@ -57,8 +61,9 @@ typedef struct s_arg
 	int		flag_hash;
 	int		width;
 	int		precision;
-	int		length;
+	int		size;
 	char	type;
+	int		length;
 }	t_arg;
 
 
@@ -69,6 +74,13 @@ int		ft_print_str(char const *str);
 char	ft_ctox(unsigned long long c, int is_upper);
 int		ft_print_hex(unsigned long long n, int is_upper);
 int		ft_print_ptr(void *ptr);
+
+void	print_arg(t_arg *arg);
+
+t_arg	*ft_parse(const char *str);
+
+int		ft_format(t_arg *arg, va_list *args);
+
 
 int		ft_printf(const char *format, ...);
 
