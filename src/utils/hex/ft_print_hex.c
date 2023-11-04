@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:33:29 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 02:46:33 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 04:02:24 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_signed_size	ft_print_hex(unsigned long long n,
 	t_signed_size	count_pfx;
 	t_signed_size	count_hex;
 
+	if (n == 0 && len == 0)
+		return (0);
 	count_pfx = 0;
 	count_hex = ft_hexlen(n);
 	if (is_prefixed && n != 0)

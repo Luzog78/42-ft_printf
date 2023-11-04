@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:39:00 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 01:37:29 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 04:13:51 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int main(void)
 	printf("|%-20.5s|\n", str);
 	printf("|%-*.*s|\n", 40, 5, str);*/
 
-	ft_printf("Test: |%0d|\n", -1);
-	printf("Test: |%0d|\n", -1);
+	ft_printf("Test: |%------21pwhoa wtf is that|\n", (void *) 13);
+	printf("Test: |%------21pwhoa wtf is that|\n", (void *) 13);
 
 	return 0;
 }

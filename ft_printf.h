@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 03:28:10 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 03:48:01 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef long long	t_signed_size;
  * @param	flag_zero	Boolean flag for '0', default 0
  * @param	flag_hash	Boolean flag for '#', default 0
  * 
- * @param	width		Integer, default 0, -2 if '*'
+ * @param	width		Integer, default -1, -2 if '*'
  * 
  * @param	precision	Integer, default -1, -2 if '*'
  * 

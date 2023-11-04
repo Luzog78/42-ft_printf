@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:15:25 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 02:45:43 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 04:00:12 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_signed_size	ft_format_u(t_arg *arg, va_list *args)
 {
 	unsigned int	nbr;
-	t_signed_size			count;
-	t_signed_size			len;
+	t_signed_size	count;
+	t_signed_size	len;
 
 	count = 0;
 	if (arg->width == -2)

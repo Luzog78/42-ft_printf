@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:14:53 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 02:45:39 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 04:11:55 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_signed_size	ft_format_p(t_arg *arg, va_list *args)
 {
-	void	*ptr;
+	void			*ptr;
 	t_signed_size	count;
 	t_signed_size	len;
 
