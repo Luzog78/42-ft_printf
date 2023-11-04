@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:40:44 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 23:45:25 by luzog            ###   ########.fr       */
+/*   Updated: 2023/11/04 00:15:52 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_arg(t_arg *arg)
 	printf("  -->  length: %d\n", arg->length);
 }
 
-int	ft_parse_format(const char *format, va_list args)
+/*int	ft_parse_format(const char *format, va_list args)
 {
 	if (*format == 'c')
 		return (ft_print_chr(va_arg(args, int)));
@@ -46,7 +46,7 @@ int	ft_parse_format(const char *format, va_list args)
 	else if (*format == '%')
 		return (ft_print_chr('%'));
 	return (0);
-}
+}*/
 
 int	ft_printf(const char *format, ...)
 {
@@ -64,7 +64,7 @@ int	ft_printf(const char *format, ...)
 			arg = ft_parse(format);
 			if (arg)
 			{
-				print_arg(arg);
+				//print_arg(arg);
 				count += ft_format(arg, &args);
 				format += arg->length;
 				free(arg);

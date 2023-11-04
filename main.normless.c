@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.normless.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:39:00 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 23:48:15 by luzog            ###   ########.fr       */
+/*   Updated: 2023/11/04 01:37:29 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 #include "libft.h"
+
+#define INT_MAX 2147483647
+#define INT_MIN -2147483648
+#define UINT_MAX 4294967295
+#define LONG_MAX 9223372036854775807
+#define LONG_MIN -9223372036854775808
+#define ULONG_MAX 18446744073709551615
 
 int main(void)
 {
@@ -69,9 +76,10 @@ int main(void)
 	printf("|%#020x|\n", 123456);
 	printf("|%20s|\n", str);
 	printf("|%-20.5s|\n", str);
-	printf("|%-.*s|\n", 40, str);*/
+	printf("|%-*.*s|\n", 40, 5, str);*/
 
-	ft_printf("Character: |%*c|\n", 40, *str);
+	ft_printf("Test: |%0d|\n", -1);
+	printf("Test: |%0d|\n", -1);
 
 	return 0;
 }

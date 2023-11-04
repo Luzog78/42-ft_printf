@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 23:45:17 by luzog            ###   ########.fr       */
+/*   Updated: 2023/11/04 00:03:15 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
@@ -66,14 +67,25 @@ typedef struct s_arg
 	int		length;
 }	t_arg;
 
-
+int		ft_max(int a, int b);
 int		ft_print_chr(char c);
-int		ft_print_nbr(long long n);
-int		ft_print_unbr(unsigned long long n);
+int		ft_print_simplified_nbr(long long n);
+int		ft_print_simplified_unbr(unsigned long long n);
 int		ft_print_str(char const *str);
+int		ft_print_n_str(char const *str, int n);
 char	ft_ctox(unsigned long long c, int is_upper);
-int		ft_print_hex(unsigned long long n, int is_upper);
-int		ft_print_ptr(void *ptr);
+int		ft_print_hex(unsigned long long n,
+			int is_prefixed, int len, int is_upper);
+int		ft_hexnlen(unsigned long long n, int is_prefixed, int len);
+int		ft_hexlen(unsigned long long n);
+int		ft_print_ptr(void *ptr, int len);
+int		ft_ptrlen(void *ptr, int len);
+int		ft_nbrnlen(long long n, char spacing, int len);
+int		ft_nbrlen(long long n, char spacing);
+int		ft_print_nbr(long long n, char spacing, int len);
+int		ft_unbrnlen(unsigned long long n, int len);
+int		ft_unbrlen(unsigned long long n);
+int		ft_print_unbr(unsigned long long n, int len);
 
 void	print_arg(t_arg *arg);
 

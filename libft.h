@@ -6,13 +6,14 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 02:18:56 by luzog             #+#    #+#             */
-/*   Updated: 2023/11/02 07:50:42 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/01 17:59:15 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-# define LIBFT_H "release-1.0"
+# define LIBFT_H
 # include <stdlib.h>
+# include <unistd.h>
 # define MAX_UNSIGNED_LONG 18446744073709551615UL
 
 typedef unsigned long long	t_ull;
@@ -72,37 +73,13 @@ void		ft_putnbr_fd(int n, int fd);
 
 // Lists
 t_list		*ft_lstnew(void *content);
-void		ft_lstadd_front(t_list **lst, t_list *new_lst);
-void		ft_lstadd_back(t_list **lst, t_list *new_lst);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *new);
 int			ft_lstsize(t_list *list);
 t_list		*ft_lstlast(t_list *list);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **list, void (*del)(void *));
 void		ft_lstiter(t_list *list, void (*f)(void *));
 t_list		*ft_lstmap(t_list *list, void *(*f)(void *), void (*del)(void *));
-
-// Libc
-void		*ft_memccpy(void *dest, void const *src, int c, size_t len);
-char		*ft_strcpy(char *dest, char const *src);
-char		*ft_strncpy(char *dest, char const *src, size_t n);
-char		*ft_strcat(char *dest, char const *src);
-char		*ft_strncat(char *dest, char const *src, size_t n);
-char		*ft_strstr(char *str, char const *to_find);
-int			ft_strcmp(char const *s1, char const *s2);
-
-// Miscellanous
-void		*ft_memalloc(size_t size);
-void		ft_memdel(void **ap);
-char		*ft_strnew(size_t size);
-void		ft_strdel(char **as);
-void		ft_strclr(char *s);
-void		ft_striter(char *s, void (*f)(char *));
-char		*ft_strmap(char *s, char (*f)(char));
-int			ft_strequ(char const *s1, char const *s2);
-int			ft_strnequ(char const *s1, char const *s2, size_t n);
-void		ft_putchar(char c);
-void		ft_putstr(char const *str);
-void		ft_putendl(char const *s);
-void		ft_putnbr(int n);
 
 #endif

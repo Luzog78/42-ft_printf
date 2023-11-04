@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luzog <luzog@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:03:54 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/02 23:31:50 by luzog            ###   ########.fr       */
+/*   Updated: 2023/11/03 13:27:35 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	ft_parse_precision(t_arg *arg, const char *str)
 		}
 		else
 		{
-			arg->precision = ft_uatoi(str);
+			arg->precision = ft_uatoi(str + i);
 			while (str[i] >= '0' && str[i] <= '9')
 				i++;
 		}
@@ -170,12 +170,10 @@ t_arg	*ft_parse(const char *str)
 		i += ft_parse_precision(arg, str + i);
 	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
 		i += ft_parse_lenght(arg, str + i);
-	if (str[i] && !ft_str_contains("cspdiuxX%", str[i]))
+	if (ft_str_contains("cspdiuxX%", str[i]))
 	{
-		free(arg);
-		return (NULL);
+		arg->type = str[i];
+		arg->length = i + 1;
 	}
-	arg->type = str[i];
-	arg->length = i + 1;
 	return (arg);
 }
