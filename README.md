@@ -1,4 +1,4 @@
-# 42's Libft
+# 42's ft_printf
 
 <br>
 
