@@ -6,28 +6,32 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:15:39 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 02:45:45 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 05:38:36 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_signed_size	ft_format_x(t_arg *arg, va_list *args)
+static void	ft_setup(t_arg *arg, va_list *args,
+	unsigned int *nbr, t_signed_size *count)
 {
-	unsigned int	nbr;
-	t_signed_size			count;
-	t_signed_size			len;
-	int				is_upper;
-
-	count = 0;
 	if (arg->width == -2)
 		arg->width = va_arg(*args, int);
 	if (arg->precision == -2)
 		arg->precision = va_arg(*args, int);
-	nbr = va_arg(*args, unsigned int);
-	is_upper = 0;
-	if (arg->type == 'X')
-		is_upper = 1;
+	*nbr = va_arg(*args, unsigned int);
+	*count = 0;
+}
+
+t_signed_size	ft_format_x(t_arg *arg, va_list *args)
+{
+	unsigned int	nbr;
+	t_signed_size	count;
+	t_signed_size	len;
+	int				is_upper;
+
+	ft_setup(arg, args, &nbr, &count);
+	is_upper = arg->type == 'X';
 	if (arg->precision < 0 && arg->flag_zero && !arg->flag_minus)
 	{
 		len = ft_max(ft_hexlen(nbr), arg->width);

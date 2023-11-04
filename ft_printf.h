@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 03:48:01 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 05:48:40 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef long long	t_signed_size;
 
@@ -74,8 +73,6 @@ typedef struct s_arg
 /* ******************************* */
 
 int				ft_printf(const char *format, ...);
-
-void			print_arg(t_arg *arg);
 
 /* ************************************** */
 /* === ->>  Formatting functions  <<- === */

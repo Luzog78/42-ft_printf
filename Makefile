@@ -60,10 +60,6 @@ libft:
 $(NAME) : libft $(OBJ_FILES)
 	ar rcs $(NAME) $(OBJ_FILES)
 
-main : libft
-	$(CC) main.normless.c $(SRC_FILES) -I. -L./Libft -lft && clear && ./a.out
-	@rm -rf a.out
-
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $@ -I. -L./Libft -lft
 

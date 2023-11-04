@@ -6,30 +6,35 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:14:37 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 02:45:41 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 05:39:58 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_signed_size	ft_format_s(t_arg *arg, va_list *args)
+static void	ft_setup(t_arg *arg, va_list *args,
+	char **str, t_signed_size *count)
 {
-	char	*str;
-	t_signed_size	count;
-	t_signed_size	len;
-
-	count = 0;
 	if (arg->width == -2)
 		arg->width = va_arg(*args, int);
 	if (arg->precision == -2)
 		arg->precision = va_arg(*args, int);
-	str = va_arg(*args, char *);
+	*str = va_arg(*args, char *);
+	*count = 0;
+}
+
+t_signed_size	ft_format_s(t_arg *arg, va_list *args)
+{
+	char			*str;
+	t_signed_size	count;
+	t_signed_size	len;
+
+	ft_setup(arg, args, &str, &count);
 	if (!str)
 	{
+		str = "";
 		if (arg->precision < 0 || arg->precision >= 6)
 			str = "(null)";
-		else
-			str = "";
 	}
 	if (arg->precision < 0)
 		len = ft_str_len(str);
