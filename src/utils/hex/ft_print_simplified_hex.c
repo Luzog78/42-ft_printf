@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_simplified_hex.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 08:16:49 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/03 13:22:41 by ysabik           ###   ########.fr       */
+/*   Created: 2023/11/04 02:02:31 by ysabik            #+#    #+#             */
+/*   Updated: 2023/11/04 02:02:42 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_str(char const *str)
+void	ft_print_simplified_hex(unsigned long long n, int is_upper)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	write(1, str, i);
-	return (i);
-}
-
-int	ft_print_n_str(char const *str, int n)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && i < n)
-		i++;
-	write(1, str, i);
-	return (i);
+	if (n < 16)
+	{
+		ft_print_chr(ft_ctox(n, is_upper));
+		return ;
+	}
+	ft_print_simplified_hex(n / 16, is_upper);
+	ft_print_chr(ft_ctox(n % 16, is_upper));
 }

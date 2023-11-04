@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 00:03:15 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/04 03:28:10 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+
+typedef long long	t_signed_size;
 
 /**
  * @brief	Store a printf argument
@@ -55,45 +57,92 @@
 */
 typedef struct s_arg
 {
-	int		flag_minus;
-	int		flag_plus;
-	int		flag_space;
-	int		flag_zero;
-	int		flag_hash;
-	int		width;
-	int		precision;
-	int		size;
-	char	type;
-	int		length;
+	int				flag_minus;
+	int				flag_plus;
+	int				flag_space;
+	int				flag_zero;
+	int				flag_hash;
+	int				width;
+	int				precision;
+	int				size;
+	char			type;
+	t_signed_size	length;
 }	t_arg;
 
-int		ft_max(int a, int b);
-int		ft_print_chr(char c);
-int		ft_print_simplified_nbr(long long n);
-int		ft_print_simplified_unbr(unsigned long long n);
-int		ft_print_str(char const *str);
-int		ft_print_n_str(char const *str, int n);
-char	ft_ctox(unsigned long long c, int is_upper);
-int		ft_print_hex(unsigned long long n,
-			int is_prefixed, int len, int is_upper);
-int		ft_hexnlen(unsigned long long n, int is_prefixed, int len);
-int		ft_hexlen(unsigned long long n);
-int		ft_print_ptr(void *ptr, int len);
-int		ft_ptrlen(void *ptr, int len);
-int		ft_nbrnlen(long long n, char spacing, int len);
-int		ft_nbrlen(long long n, char spacing);
-int		ft_print_nbr(long long n, char spacing, int len);
-int		ft_unbrnlen(unsigned long long n, int len);
-int		ft_unbrlen(unsigned long long n);
-int		ft_print_unbr(unsigned long long n, int len);
+/* ******************************* */
+/* === ->>  Main function  <<- === */
+/* ******************************* */
 
-void	print_arg(t_arg *arg);
+int				ft_printf(const char *format, ...);
 
-t_arg	*ft_parse(const char *str);
+void			print_arg(t_arg *arg);
 
-int		ft_format(t_arg *arg, va_list *args);
+/* ************************************** */
+/* === ->>  Formatting functions  <<- === */
+/* ************************************** */
 
+t_signed_size	ft_format(t_arg *arg, va_list *args);
 
-int		ft_printf(const char *format, ...);
+t_signed_size	ft_format_c(t_arg *arg, va_list *args);
+t_signed_size	ft_format_s(t_arg *arg, va_list *args);
+t_signed_size	ft_format_p(t_arg *arg, va_list *args);
+t_signed_size	ft_format_d(t_arg *arg, va_list *args);
+t_signed_size	ft_format_u(t_arg *arg, va_list *args);
+t_signed_size	ft_format_x(t_arg *arg, va_list *args);
+
+/* *********************************** */
+/* === ->>  Parsing functions  <<- === */
+/* *********************************** */
+
+t_arg			*ft_parse(const char *str);
+
+t_signed_size	ft_parse_flags(t_arg *arg, const char *str);
+t_signed_size	ft_parse_width(t_arg *arg, const char *str);
+t_signed_size	ft_parse_precision(t_arg *arg, const char *str);
+t_signed_size	ft_parse_length(t_arg *arg, const char *str);
+
+/* ********************************* */
+/* === ->>  Utils functions  <<- === */
+/* ********************************* */
+
+// chr
+t_signed_size	ft_print_chr(char c);
+
+// str
+t_signed_size	ft_print_str(char const *str);
+t_signed_size	ft_print_n_str(char const *str, t_signed_size n);
+
+// ptr
+t_signed_size	ft_print_ptr(void *ptr, t_signed_size len);
+t_signed_size	ft_ptrlen(void *ptr, t_signed_size len);
+
+// nbr
+t_signed_size	ft_print_nbr(long long n, char spacing, t_signed_size len);
+t_signed_size	ft_nbrlen(long long n, char spacing);
+t_signed_size	ft_nbrnlen(long long n, char spacing, t_signed_size len);
+t_signed_size	ft_print_simplified_nbr(long long n);
+
+// unbr
+t_signed_size	ft_print_unbr(unsigned long long n, t_signed_size len);
+t_signed_size	ft_unbrlen(unsigned long long n);
+t_signed_size	ft_unbrnlen(unsigned long long n, t_signed_size len);
+t_signed_size	ft_print_simplified_unbr(unsigned long long n);
+
+// hex.
+t_signed_size	ft_print_hex(unsigned long long n,
+					int is_prefixed, t_signed_size len, int is_upper);
+t_signed_size	ft_hexlen(unsigned long long n);
+t_signed_size	ft_hexnlen(unsigned long long n,
+					int is_prefixed, t_signed_size len);
+void			ft_print_simplified_hex(unsigned long long n, int is_upper);
+
+// miscellanous
+char			ft_ctox(unsigned long long c, int is_upper);
+void			ft_init_flags(t_arg *arg);
+t_signed_size	ft_max(t_signed_size a, t_signed_size b);
+t_signed_size	ft_min(t_signed_size a, t_signed_size b);
+int				ft_str_contains(const char *str, char c);
+t_signed_size	ft_str_len(const char *str);
+int				ft_uatoi(const char *str);
 
 #endif
