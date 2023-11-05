@@ -86,12 +86,14 @@ Version: `release1.0`
 
 - [X] &nbsp; `.*` flag : Dynamic precision handling.
 
-- [ ] &nbsp; `(length)` argument : Length modifiers for integer conversions
-	- [ ] `hh` : Char
-	- [ ] `h` : Short
+- [X] &nbsp; `(length)` argument : Length modifiers for integer conversions
+	- [X] `hh` : Char
+	- [X] `h` : Short
 	- [X] ` ` : Int
-	- [ ] `l` : Long
-	- [ ] `ll` : Long Long
+	- [X] `l` : Long
+	- [X] `ll` : Long Long
+
+- [X] &nbsp; `o` conversion : Unsigned octal.
 
 - [ ] &nbsp; `f` conversion : Floating point number in normal (fixed-point) notation.
 

@@ -6,17 +6,32 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:40:44 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 04:27:22 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/05 05:41:23 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	ft_handle_arg(const char **format, va_list *args)
+{
+	int		count;
+	t_arg	*arg;
+
+	count = 0;
+	arg = ft_parse(*format);
+	if (arg)
+	{
+		count += ft_format(arg, args);
+		*format += arg->length;
+		free(arg);
+	}
+	return (count);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
-	t_arg	*arg;
 
 	count = 0;
 	va_start(args, format);
@@ -25,13 +40,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			arg = ft_parse(format);
-			if (arg)
-			{
-				count += ft_format(arg, &args);
-				format += arg->length;
-				free(arg);
-			}
+			count += ft_handle_arg(&format, &args);
 		}
 		else
 		{

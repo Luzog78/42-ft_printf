@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 05:48:40 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/05 06:49:01 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,25 @@ t_signed_size	ft_format_c(t_arg *arg, va_list *args);
 t_signed_size	ft_format_s(t_arg *arg, va_list *args);
 t_signed_size	ft_format_p(t_arg *arg, va_list *args);
 t_signed_size	ft_format_d(t_arg *arg, va_list *args);
+t_signed_size	ft_format_ld(t_arg *arg, va_list *args);
+t_signed_size	ft_format_lld(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hd(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hhd(t_arg *arg, va_list *args);
 t_signed_size	ft_format_u(t_arg *arg, va_list *args);
+t_signed_size	ft_format_lu(t_arg *arg, va_list *args);
+t_signed_size	ft_format_llu(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hu(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hhu(t_arg *arg, va_list *args);
 t_signed_size	ft_format_x(t_arg *arg, va_list *args);
+t_signed_size	ft_format_lx(t_arg *arg, va_list *args);
+t_signed_size	ft_format_llx(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hx(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hhx(t_arg *arg, va_list *args);
+t_signed_size	ft_format_o(t_arg *arg, va_list *args);
+t_signed_size	ft_format_lo(t_arg *arg, va_list *args);
+t_signed_size	ft_format_llo(t_arg *arg, va_list *args);
+t_signed_size	ft_format_ho(t_arg *arg, va_list *args);
+t_signed_size	ft_format_hho(t_arg *arg, va_list *args);
 
 /* *********************************** */
 /* === ->>  Parsing functions  <<- === */
@@ -132,6 +149,14 @@ t_signed_size	ft_hexlen(unsigned long long n);
 t_signed_size	ft_hexnlen(unsigned long long n,
 					int is_prefixed, t_signed_size len);
 void			ft_print_simplified_hex(unsigned long long n, int is_upper);
+
+// oct.
+t_signed_size	ft_print_oct(unsigned long long n,
+					int is_prefixed, t_signed_size len);
+t_signed_size	ft_octlen(unsigned long long n);
+t_signed_size	ft_octnlen(unsigned long long n,
+					int is_prefixed, t_signed_size len);
+void			ft_print_simplified_oct(unsigned long long n);
 
 // miscellanous
 char			ft_ctox(unsigned long long c, int is_upper);

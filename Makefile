@@ -9,8 +9,25 @@ SRC_FILES	= ft_printf.c \
 				src/formatting/ft_format_s.c \
 				src/formatting/ft_format_p.c \
 				src/formatting/ft_format_d.c \
+				src/formatting/ft_format_ld.c \
+				src/formatting/ft_format_lld.c \
+				src/formatting/ft_format_hd.c \
+				src/formatting/ft_format_hhd.c \
 				src/formatting/ft_format_u.c \
+				src/formatting/ft_format_lu.c \
+				src/formatting/ft_format_llu.c \
+				src/formatting/ft_format_hu.c \
+				src/formatting/ft_format_hhu.c \
 				src/formatting/ft_format_x.c \
+				src/formatting/ft_format_lx.c \
+				src/formatting/ft_format_llx.c \
+				src/formatting/ft_format_hx.c \
+				src/formatting/ft_format_hhx.c \
+				src/formatting/ft_format_o.c \
+				src/formatting/ft_format_lo.c \
+				src/formatting/ft_format_llo.c \
+				src/formatting/ft_format_ho.c \
+				src/formatting/ft_format_hho.c \
 				\
 				src/parsing/ft_parse.c \
 				src/parsing/ft_parse_flags.c \
@@ -40,6 +57,11 @@ SRC_FILES	= ft_printf.c \
 				src/utils/hex/ft_hexlen.c \
 				src/utils/hex/ft_hexnlen.c \
 				src/utils/hex/ft_print_simplified_hex.c \
+				\
+				src/utils/oct/ft_print_oct.c \
+				src/utils/oct/ft_octlen.c \
+				src/utils/oct/ft_octnlen.c \
+				src/utils/oct/ft_print_simplified_oct.c \
 				\
 				src/utils/misc/ft_ctox.c \
 				src/utils/misc/ft_init_flags.c \
@@ -73,5 +95,10 @@ fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
+
+main : all
+	$(CC) main.normless.c -I. -L. -lftprintf
+	./a.out
+	rm -rf a.out
 
 .PHONY: all clean fclean re
