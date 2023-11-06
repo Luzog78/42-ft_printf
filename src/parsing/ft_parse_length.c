@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:07:53 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 03:27:28 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/06 22:08:48 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 t_signed_size	ft_parse_length(t_arg *arg, const char *str)
 {
-	t_signed_size	i;
-
-	i = 0;
-	if (ft_str_contains("hl", str[i]))
+	if (str[0] == 'h')
 	{
-		if (str[i] == 'h')
-			arg->size = 2;
-		else if (str[i] == 'l')
-			arg->size = 3;
-		i++;
-	}
-	if (ft_str_contains("hl", str[i]))
-	{
-		if (str[i] == 'h')
+		if (str[1] == 'h')
+		{
 			arg->size = 1;
-		else if (str[i] == 'l')
-			arg->size = 4;
-		i++;
+			return (2);
+		}
+		arg->size = 2;
+		return (1);
 	}
-	return (i);
+	else if (str[0] == 'l')
+	{
+		if (str[1] == 'l')
+		{
+			arg->size = 4;
+			return (2);
+		}
+		arg->size = 3;
+		return (1);
+	}
+	return (0);
 }

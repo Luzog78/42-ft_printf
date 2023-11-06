@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/05 06:49:01 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/06 23:15:50 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef long long	t_signed_size;
  * @param	size		Integer, default 0,
  * 						[  1: hh  |  2: h  |  3: l  |  4: ll  ]
  * 
- * @param	type		Character [cspdiuxX%]
+ * @param	type		Character [cspdiuxXo%]
  * 
  * @param	length		Integer, Length of the NON-FOMATTED argument
  * 						WITHOUT the starting '%' character
@@ -72,6 +72,17 @@ typedef struct s_arg
 /* === ->>  Main function  <<- === */
 /* ******************************* */
 
+/**
+ * @brief	Reproduce the behavior of the printf function
+ * 
+ * @param	format	Character string to be formatted
+ * @param	...		Arguments to be formatted
+ * 
+ * @note	ERROR: Only if the format string is NULL
+ * 					OR there is a %\0 without a previous invalid argument
+ * 
+ * @return	int		Number of characters printed OR -1 if error (see note)
+*/
 int				ft_printf(const char *format, ...);
 
 /* ************************************** */
@@ -163,7 +174,7 @@ char			ft_ctox(unsigned long long c, int is_upper);
 void			ft_init_flags(t_arg *arg);
 t_signed_size	ft_max(t_signed_size a, t_signed_size b);
 t_signed_size	ft_min(t_signed_size a, t_signed_size b);
-int				ft_str_contains(const char *str, char c);
+size_t			ft_str_contains(const char *str, char c);
 t_signed_size	ft_str_len(const char *str);
 int				ft_uatoi(const char *str);
 

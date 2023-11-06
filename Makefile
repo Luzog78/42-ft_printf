@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/06 19:34:29 by ysabik            #+#    #+#              #
+#    Updated: 2023/11/06 21:41:08 by ysabik           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC			= gcc
 CFLAGS		= -Werror -Wall -Wextra
 NAME		= libftprintf.a
-HEADER		= ft_printf.h
+INCLUDES	= .
 SRC_FILES	= ft_printf.c \
 				\
 				src/formatting/ft_format.c \
@@ -72,33 +84,39 @@ SRC_FILES	= ft_printf.c \
 				src/utils/misc/ft_uatoi.c
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
+LIBFT_DIR	= ./Libft
+LIBFT_LIB	= $(LIBFT_DIR)/libft.a
+LIBFT_FLAGS	= -I $(LIBFT_DIR) -L $(LIBFT_DIR) -lft
+LIBFT_MAKE	= make -C $(LIBFT_DIR)
+
 all : $(NAME)
 
 bonus: all
 
 libft:
-	make -C Libft
+	$(LIBFT_MAKE)
 
 $(NAME) : libft $(OBJ_FILES)
+	cp $(LIBFT_LIB) $(NAME)
 	ar rcs $(NAME) $(OBJ_FILES)
 
 .c.o :
-	$(CC) $(CFLAGS) -c $< -o $@ -I. -L./Libft -lft
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(LIBFT_FLAGS)
 
 clean :
-	make -C Libft clean
+	$(LIBFT_MAKE) clean
 	rm -rf $(OBJ_FILES)
 	rm -rf a.out
 
 fclean : clean
-	make -C Libft fclean
+	$(LIBFT_MAKE) fclean
 	rm -rf $(NAME)
 
 re : fclean all
 
 main : all
-	$(CC) main.normless.c -I. -L. -lftprintf
+	$(CC) main.normless.c -I $(INCLUDES) $(LIBFT_FLAGS) -L. -lftprintf
 	./a.out
-	rm -rf a.out
+	@rm -rf a.out
 
 .PHONY: all clean fclean re

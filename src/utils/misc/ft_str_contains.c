@@ -6,17 +6,22 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:11:04 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/04 02:42:22 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/06 22:04:03 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_contains(const char *str, char c)
+#include "ft_printf.h"
+
+size_t	ft_str_contains(const char *str, char c)
 {
+	size_t	i;
+
+	i = 0;
 	while (*str)
 	{
 		if (*str == c)
-			return (1);
+			i++;
 		str++;
 	}
-	return (0);
+	return (i);
 }
