@@ -95,6 +95,10 @@ Version: `release1.0`
 
 - [X] &nbsp; `o` conversion : Unsigned octal.
 
+- [X] &nbsp; `-1` return value : Error handling. (incomprehensible and pointless)
+
+- [X] &nbsp; negative `width`/`precision`.
+
 - [ ] &nbsp; `f` conversion : Floating point number in normal (fixed-point) notation.
 
 ---

@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 07:19:41 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/06 23:15:50 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/07 01:59:47 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ t_signed_size	ft_print_simplified_unbr(unsigned long long n);
 
 // hex.
 t_signed_size	ft_print_hex(unsigned long long n,
-					int is_prefixed, t_signed_size len, int is_upper);
-t_signed_size	ft_hexlen(unsigned long long n);
+					int is_prefixed, t_signed_size len, char type);
+t_signed_size	ft_hexlen(unsigned long long n, int is_prefixed);
 t_signed_size	ft_hexnlen(unsigned long long n,
 					int is_prefixed, t_signed_size len);
 void			ft_print_simplified_hex(unsigned long long n, int is_upper);
@@ -170,6 +170,7 @@ t_signed_size	ft_octnlen(unsigned long long n,
 void			ft_print_simplified_oct(unsigned long long n);
 
 // miscellanous
+int				ft_abs(int n);
 char			ft_ctox(unsigned long long c, int is_upper);
 void			ft_init_flags(t_arg *arg);
 t_signed_size	ft_max(t_signed_size a, t_signed_size b);

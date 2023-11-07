@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexnlen.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 02:02:12 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/07 01:47:07 by ysabik           ###   ########.fr       */
+/*   Created: 2023/11/07 01:59:12 by ysabik            #+#    #+#             */
+/*   Updated: 2023/11/07 01:59:30 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-t_signed_size	ft_hexnlen(unsigned long long n,
-	int is_prefixed, t_signed_size len)
+int	ft_abs(int n)
 {
-	if (n == 0 && len == 0)
-		return (0);
-	if (is_prefixed && n != 0)
-		return (ft_max(ft_hexlen(n, is_prefixed), len + 2));
-	return (ft_max(ft_hexlen(n, is_prefixed), len));
+	if (n < 0)
+		return (-n);
+	return (n);
 }

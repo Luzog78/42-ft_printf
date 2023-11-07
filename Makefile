@@ -6,7 +6,7 @@
 #    By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 19:34:29 by ysabik            #+#    #+#              #
-#    Updated: 2023/11/06 23:21:29 by ysabik           ###   ########.fr        #
+#    Updated: 2023/11/07 02:00:05 by ysabik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ SRC_FILES	= ft_printf.c \
 				src/utils/oct/ft_octnlen.c \
 				src/utils/oct/ft_print_simplified_oct.c \
 				\
+				src/utils/misc/ft_abs.c \
 				src/utils/misc/ft_ctox.c \
 				src/utils/misc/ft_init_flags.c \
 				src/utils/misc/ft_min.c \

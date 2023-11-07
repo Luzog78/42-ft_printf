@@ -6,7 +6,7 @@
 /*   By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:15:39 by ysabik            #+#    #+#             */
-/*   Updated: 2023/11/05 06:50:15 by ysabik           ###   ########.fr       */
+/*   Updated: 2023/11/07 02:03:21 by ysabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ static void	ft_setup(t_arg *arg, va_list *args,
 	unsigned short *nbr, t_signed_size *count)
 {
 	if (arg->width == -2)
+	{
 		arg->width = va_arg(*args, int);
+		if (arg->width < 0)
+		{
+			arg->width = ft_abs(arg->width);
+			arg->flag_minus = 1;
+		}
+	}
 	if (arg->precision == -2)
 		arg->precision = va_arg(*args, int);
 	*nbr = (unsigned short) va_arg(*args, unsigned int);
