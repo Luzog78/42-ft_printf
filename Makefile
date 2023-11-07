@@ -6,7 +6,7 @@
 #    By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 19:34:29 by ysabik            #+#    #+#              #
-#    Updated: 2023/11/06 21:41:08 by ysabik           ###   ########.fr        #
+#    Updated: 2023/11/06 23:21:29 by ysabik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,9 +114,4 @@ fclean : clean
 
 re : fclean all
 
-main : all
-	$(CC) main.normless.c -I $(INCLUDES) $(LIBFT_FLAGS) -L. -lftprintf
-	./a.out
-	@rm -rf a.out
-
-.PHONY: all clean fclean re
+.PHONY: bonus libft all clean fclean re
