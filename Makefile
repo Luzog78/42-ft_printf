@@ -6,7 +6,7 @@
 #    By: ysabik <ysabik@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 19:34:29 by ysabik            #+#    #+#              #
-#    Updated: 2023/11/07 02:00:05 by ysabik           ###   ########.fr        #
+#    Updated: 2023/11/17 06:52:19 by ysabik           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,34 +85,22 @@ SRC_FILES	= ft_printf.c \
 				src/utils/misc/ft_uatoi.c
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
-LIBFT_DIR	= ./Libft
-LIBFT_LIB	= $(LIBFT_DIR)/libft.a
-LIBFT_FLAGS	= -I $(LIBFT_DIR) -L $(LIBFT_DIR) -lft
-LIBFT_MAKE	= make -C $(LIBFT_DIR)
-
 all : $(NAME)
 
 bonus: all
 
-libft:
-	$(LIBFT_MAKE)
-
-$(NAME) : libft $(OBJ_FILES)
-	cp $(LIBFT_LIB) $(NAME)
+$(NAME) : $(OBJ_FILES)
 	ar rcs $(NAME) $(OBJ_FILES)
 
 .c.o :
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(LIBFT_FLAGS)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 clean :
-	$(LIBFT_MAKE) clean
 	rm -rf $(OBJ_FILES)
-	rm -rf a.out
 
 fclean : clean
-	$(LIBFT_MAKE) fclean
 	rm -rf $(NAME)
 
 re : fclean all
 
-.PHONY: bonus libft all clean fclean re
+.PHONY: bonus all clean fclean re
